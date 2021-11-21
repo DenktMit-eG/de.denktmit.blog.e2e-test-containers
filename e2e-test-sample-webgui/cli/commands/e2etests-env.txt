@@ -1,0 +1,19 @@
+###################################
+# Mandatory environment variables #
+###################################
+EXPECTED_RESULT_CONTAINS
+ - The text snippet expected to be part of the search results
+
+###################################
+# Optional environment variables  #
+###################################
+GAUGE_JVM_ARGS
+ - arguments provided to the JVM, that is started by the gauge-java test runner. Defaults to
+   "-Dlogback.configurationFile=/common/logback.xml" to provide a logging configuration
+GAUGE_LOG_LEVEL: enum
+ - The log level of the Gauge spec runner itself. Must be debug, info, warning, error or
+   critical (default "info")
+HEADLESS_BROWSER: BOOLEAN
+ - Determines if to run a headless browsers. Defaults to true.
+SEARCH_TERM
+ - The term to be searched for

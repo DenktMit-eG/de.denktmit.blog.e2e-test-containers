@@ -1,0 +1,1 @@
+File to enforce creation of target/classes directory to fix the annoying NullPointerException during Gauge startup

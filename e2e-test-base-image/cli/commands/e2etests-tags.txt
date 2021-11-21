@@ -1,0 +1,6 @@
+poems
+ - Sample E2E tests about poems. Includes all tests
+smoke
+ - Includes a single successful test
+failing
+ - Includes a single failing test

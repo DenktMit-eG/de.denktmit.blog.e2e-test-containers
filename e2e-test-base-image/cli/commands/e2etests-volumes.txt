@@ -1,0 +1,4 @@
+/tests/reports
+ - The gauge tests generate a nice XML and HTML reports that end up here
+/tests/logs
+ - Logs created by gauge are available in

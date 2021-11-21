@@ -1,0 +1,15 @@
+###################################
+# Mandatory environment variables #
+###################################
+(none for this sample)
+
+###################################
+# Optional environment variables  #
+###################################
+GAUGE_JVM_ARGS
+ - arguments provided to the JVM, that is started by the gauge-java test runner. Defaults to
+   "-Dlogback.configurationFile=/common/logback.xml" to provide a logging configuration
+GAUGE_LOG_LEVEL: enum
+ - The log level of the Gauge spec runner itself. Must be debug, info, warning, error or
+   critical (default "info")
+

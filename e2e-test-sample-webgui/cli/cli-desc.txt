@@ -1,0 +1,5 @@
+This is the e2e test sample showcases testing a web gui using an actual browser. It actually
+uses a headless container installed browser to test against an deployment. The contained specs
+are visiting the https://duckduckgo.com/ webpage, perform a search and verify the result. One
+tests uses hardcoded params, while another is using environment variables for the search term
+and the expected result.

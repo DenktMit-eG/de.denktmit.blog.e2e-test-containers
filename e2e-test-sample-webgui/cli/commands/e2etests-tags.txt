@@ -1,0 +1,6 @@
+search
+ - Sample E2E tests. Includes all tests
+smoke
+ - Includes a single successful test, in this case
+custom
+ - Includes a single failing test

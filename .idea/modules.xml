@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/e2e-test-base-image/e2e-test-base-image.iml" filepath="$PROJECT_DIR$/e2e-test-base-image/e2e-test-base-image.iml" />
+      <module fileurl="file://$PROJECT_DIR$/e2e-test-sample-webgui/e2e-test-sample-webgui.iml" filepath="$PROJECT_DIR$/e2e-test-sample-webgui/e2e-test-sample-webgui.iml" />
+    </modules>
+  </component>
+</project>

@@ -1,0 +1,3 @@
+This is the e2e-test-base-image cli, that only contains a small sample setup. The base
+image is designed to be extended by product specific E2E-Test containers, overwriting
+behavior and usage instructions.

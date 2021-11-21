@@ -1,0 +1,12 @@
+../tsc-test/tsc-test-e2e-gauge/target/
+.gauge/
+reports/
+out/
+logs/
+gauge_bin/
+libs/
+.idea
+.gradle/
+*.iml
+build/
+*.log
