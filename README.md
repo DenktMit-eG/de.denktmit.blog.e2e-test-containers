@@ -1,17 +1,17 @@
 # E2E Testcontainers
 
-Lets start with a short reminder on E2e-Tests. While unit and integration tests verify, that a system under test does
-things right, the E2E-Tests verify that a system does the right thing. They are therefore acceptance tests and should
-provide an every
-increasing [Running tested features (Brought up by Ron Jeffries)](https://ronjeffries.com/xprog/articles/jatrtsmetric/)
+Let's start with a short reminder on E2E ("End-to-End") tests. While unit and integration tests verify that a system 
+under test does things right, the E2E tests verify that a system does the right thing. They are therefore acceptance 
+tests and should provide an ever-increasing
+[Running tested features (Brought up by Ron Jeffries)](https://ronjeffries.com/xprog/articles/jatrtsmetric/)
 metric understandable by business users.
 
-Usually those tests are run on the local developers machine and in the CI to pass the quality gates. This is usually
+Usually those tests are run on the developer's local machine and in the CI to pass the quality gates. This is usually
 enough for a centrally managed system existing in a single configuration. As soon as we talk about turnkey solutions,
 the system under tests might be living on many different environments and installations. Wouldn't it be nice to have a
-uniform way to verify, the software is working as expected on those different environments? At least have some smoke
-tests running? Well, why not somehow release these E2E-Tests alongside the product and make them self-explanatory to be
-used against any environment whenever needed? This is, what I propose to achieve with E2E Testcontainers.
+uniform way to verify that the software is working as expected on those different environments? At least have some smoke
+tests running? Well, why not somehow release these E2E tests alongside the product and make them self-explanatory to be
+used against any environment whenever needed? This is what I propose to achieve with E2E Testcontainers.
 
 ## Getting started
 
@@ -26,7 +26,7 @@ your freshly baked docker images.
 
 ### Exploring a test-container
 
-The most basic thing you can do to a docker image is, to just run it. Run the container for the first time:
+The most basic thing you can do to a docker image is to just run it. Run the container for the first time:
 
     docker run --rm e2e-test-base-image:latest
 
@@ -50,7 +50,7 @@ So basically, the container advises us to use the entry script /cli/cli.sh. We'l
     docker run --rm e2e-test-base-image:latest /cli/cli.sh
 
 But what can we do from here? Well obviously, the script helps us to recognise accidentally wrong input in showing the
-help page again for every argument, that does not map onto a command. Try it. Add the script to call
+help page again for every argument that does not map onto a command. Try it. Add some random parameters:
 
     docker run --rm e2e-test-base-image:latest /cli/cli.sh unknown 
     docker run --rm e2e-test-base-image:latest /cli/cli.sh boring three params 
@@ -117,12 +117,12 @@ different help text. So we are one steps further it seems.
 ### Take a look at the specs
 
 Since I built the test containers using the [gauge testing framework](https://gauge.org/), there are specs. Specs are
-written in Markdown and describe a certain feature of the system under test in a human readable way. Add the script to
-call
+written in Markdown and describe a certain feature of the system under test in a human-readable way. Add a parameter
+to the script call:
 
     docker run --rm e2e-test-base-image:latest /cli/cli.sh e2etests specs
 
-The specs command simply outputs the available spec
+The specs command simply outputs the available spec:
 
     == cli.sh 2021-11-01T12:09:30Z Exporting config ... == e2etests.sh 2021-11-01T12:09:30Z PRINT E2E SPECS Rose validity
     =============
@@ -139,17 +139,19 @@ The specs command simply outputs the available spec
     
     * A rose is a rose is a "lily flower"
 
-as we can see, we only defined a single feature here. The test is about a short quotation, sometimes considered a poem
+As we can see, we only defined a single feature here. The test is about a short quotation, sometimes considered a poem
 in its own by Gertrude Stein. Since the little poem can be read as a statement for validity and identity of things I
-found it very fitting. There are three tags across the specs: poems, smoke and failing. The first scenario is an always
-succeeding while the second one is always failing. If you ran the the smoke tests only, you end up with succeeding
-otherwise with failing tests Run all E2E tests
+found it very fitting. There are three tags across the specs: poems, smoke and failing. The first scenario is an 
+always-succeeding one while the second one is always failing. If you ran the smoke tests only, you end up with succeeding,
+otherwise with failing tests. 
 
-Since we do not need any additional setup, you can run the tests as easy as
+### Run all E2E tests
+
+Since we do not need any additional setup, you can run the tests as easy as:
 
     docker run --rm e2e-test-base-image:latest /cli/cli.sh e2etests run
 
-After a short time, you should see this output
+After a short time, you should see this output:
 
     == cli.sh 2021-11-01T12:22:14Z Exporting config ... == e2etests.sh 2021-11-01T12:22:14Z RUN E2E TESTS
     
@@ -191,11 +193,11 @@ After a short time, you should see this output
 
 ### Run the smoke tests only
 
-If you run the smoke tests only Add the script to call
+To run only the smoke tests, call the script like this:
 
     docker run --rm e2e-test-base-image:latest /cli/cli.sh e2etests run smoke
 
-the tests succeed
+The tests succeed:
 
     == cli.sh 2021-11-01T12:23:48Z Exporting config ... == e2etests.sh 2021-11-01T12:23:48Z RUN E2E TESTS
     
@@ -213,7 +215,7 @@ the tests succeed
 
 ### What about CI integration?
 
-We can easily evaluate, if all tests succeeded in e.g. a CI process using by evaluating the return code.
+We can easily evaluate if all tests succeeded in e.g. a CI process by evaluating the return code.
 
     # Returns 'Smoke tests succeeded'
     
@@ -227,11 +229,11 @@ We can easily evaluate, if all tests succeeded in e.g. a CI process using by eva
 
 ## A more sophisticated example: Webtests using Selenium
 
-Lets see, what the sample Web GUI container has to offer in E2E tests an just run a webtest docker
+Let's see, what the sample Web GUI container has to offer in E2E tests and just run a webtest docker:
 
     run --rm e2e-test-sample-webgui:latest /cli/cli.sh e2etests
 
-The output is different than for the other container
+The output is different from the other container:
 
     == cli.sh 2021-11-01T11:27:55Z Exporting config ... == e2etests.sh 2021-11-01T11:27:55Z HELP
     
@@ -293,10 +295,10 @@ The output is different than for the other container
 
 ### Run the web tests
 
-Okay, we need to setup a mandatory environment variables and might also want to change some optionals. This time, we'd
+Okay, we need to set up a mandatory environment variables and might also want to change some optionals. This time, we'd
 also like to have a look at the generated reports. To make them more fun, we use a full-fledged browser and disable the
 headless mode. This leaves us with nice screenshots when a test fails and makes it easier to track down bugs. So, lets
-give it a first try. Lets run a failing webtest
+give it a first try. Let's run a failing webtest:
 
     docker run --rm  \
     -e "SEARCH_TERM=denktmit.de" \
@@ -307,15 +309,15 @@ give it a first try. Lets run a failing webtest
 
 ### Evaluate the results and why the tests are failing
 
-Once the test is completed, we might want to take a look at the HTML reports, we so wisely mounted into our file system.
-This is, what the Gauge generated reports look like
+Once the test is completed, we might want to take a look at the HTML reports we so wisely mounted into our file system.
+This is what the Gauge generated reports look like:
 ![](gauge-report-screenshot.png)
 
-Clicking on the screenshot gives you a great inside into what the browser was seeing while running the tests. Obviously
-the DenktMit eG is not yet listed as the coolest co-op in the world, but at least we get the information what went wrong
+Clicking on the screenshot gives you a great insight into what the browser was seeing while running the tests. Obviously
+the DenktMit eG is not yet listed as the coolest co-op in the world, but at least we get the information what went wrong:
 ![](search-results-screenshot.png)
 
-Obviously, the search term is not giving us the expected result. Let's do a query, this humble presenter knows to work
+Obviously, the search term is not giving us the expected result. Let's do a query which this humble presenter knows to work
 most of the time.
 
     docker run --rm  \
@@ -325,7 +327,7 @@ most of the time.
     -v /home/<youruser>/reports:/tests/reports \
     e2e-test-sample-webgui:latest /cli/cli.sh e2etests run
 
-This time we have a more satisfying outcome, all the tests were successful. That is the end of this little tutorial, 
+This time we have a more satisfying outcome, all the tests were successful. This is the end of this little tutorial, 
 I hope you enjoyed it. Have fun building and releasing your own test containers.
 
 ## Links
