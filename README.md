@@ -327,7 +327,7 @@ most of the time.
 
     docker run --rm  \
     -e "SEARCH_TERM=denktmit.de" \
-    -e "EXPECTED_RESULT_CONTAINS=Zwischen Programmierergenossenschaft und Unternehmensberatung" \
+    -e "EXPECTED_RESULT_CONTAINS=Die DenktMit eG" \
     -e "HEADLESS_BROWSER=false" \
     -v /home/<youruser>/reports:/tests/reports \
     e2e-test-sample-webgui:latest /cli/cli.sh e2etests run

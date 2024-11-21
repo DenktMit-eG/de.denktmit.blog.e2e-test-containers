@@ -1,7 +1,7 @@
 FROM adoptopenjdk/openjdk11:jdk-11.0.12_7-ubuntu
-ENV GAUGE_ARCHIVE=gauge-1.4.1-linux.x86_64.zip
+ENV GAUGE_ARCHIVE=gauge-1.6.10-linux.x86_64.zip
 ENV GAUGE_TELEMETRY_ENABLED=false
-ENV GAUGE_VERSION=1.4.1
+ENV GAUGE_VERSION=1.6.10
 ENV GAUGE_LOG_LEVEL="info"
 ENV GAUGE_JVM_ARGS="-Dlogback.configurationFile=/common/logback.xml"
 ENV DISPLAY=:0
@@ -18,7 +18,7 @@ RUN set -ex && \
     # do not check for updates
     gauge config check_updates false && \
     # install gauge plugins
-    gauge install java --version 0.7.15 && \
+    gauge install java --version 0.11.1 && \
     gauge install html-report && \
     gauge install xml-report && \
     gauge install spectacle && \

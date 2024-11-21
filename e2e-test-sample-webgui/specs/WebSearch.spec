@@ -7,7 +7,7 @@ tags: search, smoke
 
 * Given I visit DuckDuckGo searchpage
 * When I search for term "github"
-* Then I will see a search result with headline "Where the world builds software"
+* Then I will see a search result with headline "Build and ship software"
 
 Do a custom web search
 ----------------------

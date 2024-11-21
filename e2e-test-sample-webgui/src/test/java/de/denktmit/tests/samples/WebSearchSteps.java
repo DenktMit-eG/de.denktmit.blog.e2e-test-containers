@@ -23,7 +23,7 @@ public class WebSearchSteps {
 
   @Step("Then I will see a search result with headline <headline>")
   public void verifyResultsContain(String headline) {
-    $(By.id("links")).shouldHave(Condition.text(headline));
+    $(By.className("react-results--main")).shouldHave(Condition.text(headline));
   }
 
   @Step("When I search for custom term <term>")
@@ -35,7 +35,7 @@ public class WebSearchSteps {
   @Step("Then I will see a custom search result with headline <headline>")
   public void verifyCustomResultsContain(String headline) {
     headline = SuiteVariableResolver.resolve(headline);
-    $(By.id("links")).shouldHave(Condition.text(headline));
+    $(By.className("react-results--main")).shouldHave(Condition.text(headline));
   }
 
 }

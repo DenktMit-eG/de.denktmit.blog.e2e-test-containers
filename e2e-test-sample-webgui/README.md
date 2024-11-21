@@ -8,7 +8,7 @@ of this project.
 ## How the container assembly works
 
 The **build_image.sh** script builds the sample-webgui container in two steps. It first runs a Maven build and then runs
-the docker build itself. Lets follow trough.
+the docker build itself. Let's follow through.
 
 ## The Maven build
 
