@@ -17,11 +17,11 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <skip.reports.jacoco>false</skip.reports.jacoco>
         <targetJdk>${java.version}</targetJdk>
-        <version.ch.qos.logback.logback-classic>1.2.6</version.ch.qos.logback.logback-classic>
-        <version.com.codeborne.selenide>5.24.4</version.com.codeborne.selenide>
-        <version.com.github.ekryd.sortpom.sortpom-maven-plugin>3.0.0</version.com.github.ekryd.sortpom.sortpom-maven-plugin>
-        <version.com.thoughtworks.gauge.gauge-java>0.7.15</version.com.thoughtworks.gauge.gauge-java>
-        <version.com.thoughtworks.gauge.maven.gauge-maven-plugin>1.5.0</version.com.thoughtworks.gauge.maven.gauge-maven-plugin>
+        <version.ch.qos.logback.logback-classic>1.5.8</version.ch.qos.logback.logback-classic>
+        <version.com.codeborne.selenide>6.8.1</version.com.codeborne.selenide>
+        <version.com.github.ekryd.sortpom.sortpom-maven-plugin>4.0.0</version.com.github.ekryd.sortpom.sortpom-maven-plugin>
+        <version.com.thoughtworks.gauge.gauge-java>0.11.1</version.com.thoughtworks.gauge.gauge-java>
+        <version.com.thoughtworks.gauge.maven.gauge-maven-plugin>1.6.3</version.com.thoughtworks.gauge.maven.gauge-maven-plugin>
         <version.maven-clean-plugin.maven-clean-plugin>3.1.0</version.maven-clean-plugin.maven-clean-plugin>
         <version.org.apache.maven.plugins.maven-assembly-plugin>3.3.0</version.org.apache.maven.plugins.maven-assembly-plugin>
         <version.org.apache.maven.plugins.maven-compiler-plugin>3.8.1</version.org.apache.maven.plugins.maven-compiler-plugin>

@@ -13,8 +13,13 @@ uniform way to verify that the software is working as expected on those differen
 tests running? Well, why not somehow release these E2E tests alongside the product and make them self-explanatory to be
 used against any environment whenever needed? This is what I propose to achieve with E2E Testcontainers.
 
-## Getting started
+## Prerequisites
+To follow this tutorial, you need a local Gauge + Java plugin installation
 
+* Have an up-to-date Gauge installed https://docs.gauge.org/getting_started/installing-gauge on your OS.
+* Have the Java plugin installed https://docs.gauge.org/plugin?os=linux&language=java&ide=intellij
+
+## Getting started
 By **running the main build.sh** script of this project, you can locally create both the base image and the sample webgui
 image. In resemblance to most UNIX command line tools, the test containers are designed to reveal their features
 included by just using them.
