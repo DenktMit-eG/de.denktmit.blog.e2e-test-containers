@@ -236,7 +236,7 @@ We can easily evaluate if all tests succeeded in e.g. a CI process by evaluating
 
 Let's see, what the sample Web GUI container has to offer in E2E tests and just run a webtest docker:
 
-    run --rm e2e-test-sample-webgui:latest /cli/cli.sh e2etests
+    docker run --rm e2e-test-sample-webgui:latest /cli/cli.sh e2etests
 
 The output is different from the other container:
 
