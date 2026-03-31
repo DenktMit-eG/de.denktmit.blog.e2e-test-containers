@@ -3,4 +3,4 @@ search
 smoke
  - Includes a single successful test, in this case
 custom
- - Includes a single failing test
+ - Includes a single custom parameterized test

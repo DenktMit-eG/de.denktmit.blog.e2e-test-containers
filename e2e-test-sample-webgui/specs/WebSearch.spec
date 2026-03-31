@@ -7,7 +7,7 @@ tags: search, smoke
 
 * Given I visit DuckDuckGo searchpage
 * When I search for term "github"
-* Then I will see a search result with headline "Change is constant"
+* Then I will see a search result with headline "github.com"
 
 Do a custom web search
 ----------------------

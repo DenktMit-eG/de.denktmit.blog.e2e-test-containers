@@ -1,0 +1,15 @@
+.git
+.gitignore
+.idea
+*.iml
+.DS_Store
+.gauge
+.gradle
+build/
+target/
+reports/
+logs/
+*.log
+.claude
+CLAUDE.md
+README.md

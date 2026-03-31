@@ -8,6 +8,7 @@ ENV GAUGE_JVM_ARGS="-Dlogback.configurationFile=/common/logback.xml"
 ENV JAVA_TOOL_OPTIONS="--enable-native-access=ALL-UNNAMED"
 ENV DISPLAY=:0
 ENV FIREFOX_BINARY=/usr/bin/firefox
+COPY version.txt /version.txt
 COPY cli /cli/
 COPY common /common/
 COPY tests /tests/

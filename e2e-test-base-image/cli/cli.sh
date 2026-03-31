@@ -15,7 +15,7 @@ export E2E_CLI_LOG_DIR
 # Prints the global help dialog
 cli_help() {
   local -r cli_name=${0##*/}
-  local -r version=$(<"${E2E_CLI_WORKDIR}/VERSION")
+  local -r version=$(<"${E2E_CLI_WORKDIR}/../version.txt")
     echo "
   E2E Tests CLI
   CLI-Version: ${version}
