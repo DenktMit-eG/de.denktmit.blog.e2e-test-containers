@@ -25,7 +25,14 @@ e2etests_specs() {
       echo "The container has no path /tests/specs for Gauge to run"
       exit 1
   fi
-  tail -n +1 /tests/specs/*.spec
+  shopt -s nullglob
+  local specs=(/tests/specs/*.spec)
+  shopt -u nullglob
+  if [ ${#specs[@]} -eq 0 ]; then
+      echo "No .spec files found in /tests/specs/"
+      exit 1
+  fi
+  tail -n +1 "${specs[@]}"
   echo
 }
 
@@ -51,18 +58,18 @@ e2etests_help() {
     variables, otherwise the run command will fail. Optional variables on the other hand might be used if needed. If
     both lists are empty, it means, that your current test container does not need any setup to run the tests :).
 
-    $(cat ${E2E_CLI_WORKDIR}/commands/e2etests-env.txt | indent)
+    $(indent < "${E2E_CLI_WORKDIR}/commands/e2etests-env.txt")
 
     Available test tags:
     The available tags and their purpose. For example a tag smoke might only run some quick tests to verify a system is
     ready.
 
-    $(cat ${E2E_CLI_WORKDIR}/commands/e2etests-tags.txt  | indent)
+    $(indent < "${E2E_CLI_WORKDIR}/commands/e2etests-tags.txt")
 
     Mount points of interest:
     The mount points of interests describe container paths you might want to mount to your host machine.
 
-    $(cat ${E2E_CLI_WORKDIR}/commands/e2etests-volumes.txt | indent)
+    $(indent < "${E2E_CLI_WORKDIR}/commands/e2etests-volumes.txt")
   "
   exit 1
 }

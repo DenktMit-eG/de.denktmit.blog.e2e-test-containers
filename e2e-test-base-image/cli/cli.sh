@@ -6,7 +6,7 @@ E2E_CLI_WORKDIR=$(cd "$(dirname "$0")" && pwd)
 export E2E_CLI_WORKDIR
 
 E2E_CLI_LOG_DIR=${E2E_CLI_WORKDIR}/logs
-export LOG_DIR
+export E2E_CLI_LOG_DIR
 
 # Import common functions
 # shellcheck source=./common.sh
@@ -15,7 +15,7 @@ export LOG_DIR
 # Prints the global help dialog
 cli_help() {
   local -r cli_name=${0##*/}
-  local -r version=$(cat "${E2E_CLI_WORKDIR}/VERSION")
+  local -r version=$(<"${E2E_CLI_WORKDIR}/VERSION")
     echo "
   E2E Tests CLI
   CLI-Version: ${version}
@@ -26,17 +26,16 @@ cli_help() {
     *         Help
 
   Description:
-    $(cat ${E2E_CLI_WORKDIR}/cli-desc.txt | indent)
+    $(indent < "${E2E_CLI_WORKDIR}/cli-desc.txt")
   "
   exit 1
 }
 
 # Export config properties
 cli_log "Exporting config ..."
-for LINE in $(grep -v '^\s*#' "${E2E_CLI_WORKDIR}/config.properties")
-do
-    export "$LINE";
-done
+while IFS= read -r LINE; do
+    [ -n "$LINE" ] && export "$LINE"
+done < <(grep -v '^\s*#' "${E2E_CLI_WORKDIR}/config.properties")
 
 # Process script input
 COMMAND=${1-"help"}
