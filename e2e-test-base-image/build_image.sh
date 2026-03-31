@@ -1,2 +1,12 @@
 #!/usr/bin/env bash
-docker build -t e2e-test-base-image .
+set -eu -o pipefail
+
+SCRIPT_DIR=$(cd "$(dirname "$0")" && pwd)
+VERSION=$(cat "${SCRIPT_DIR}/version.txt")
+
+CACHE_FLAG=""
+if [[ "${OMIT_CACHE:-false}" == "true" ]]; then
+  CACHE_FLAG="--no-cache"
+fi
+
+docker build ${CACHE_FLAG} -t "e2e-test-base-image:${VERSION}" -t e2e-test-base-image:latest .

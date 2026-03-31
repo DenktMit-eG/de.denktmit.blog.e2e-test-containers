@@ -9,7 +9,7 @@
 
     <properties>
         <gauge.env>default</gauge.env>
-        <java.version>11</java.version>
+        <java.version>25</java.version>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <maven.javadoc.skip>true</maven.javadoc.skip>
@@ -17,18 +17,19 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <skip.reports.jacoco>false</skip.reports.jacoco>
         <targetJdk>${java.version}</targetJdk>
-        <version.ch.qos.logback.logback-classic>1.5.8</version.ch.qos.logback.logback-classic>
-        <version.com.codeborne.selenide>6.8.1</version.com.codeborne.selenide>
+        <version.ch.qos.logback.logback-classic>1.5.32</version.ch.qos.logback.logback-classic>
+        <version.com.codeborne.selenide>7.15.0</version.com.codeborne.selenide>
         <version.com.github.ekryd.sortpom.sortpom-maven-plugin>4.0.0</version.com.github.ekryd.sortpom.sortpom-maven-plugin>
-        <version.com.thoughtworks.gauge.gauge-java>0.11.1</version.com.thoughtworks.gauge.gauge-java>
-        <version.com.thoughtworks.gauge.maven.gauge-maven-plugin>1.6.3</version.com.thoughtworks.gauge.maven.gauge-maven-plugin>
-        <version.maven-clean-plugin.maven-clean-plugin>3.1.0</version.maven-clean-plugin.maven-clean-plugin>
-        <version.org.apache.maven.plugins.maven-assembly-plugin>3.3.0</version.org.apache.maven.plugins.maven-assembly-plugin>
-        <version.org.apache.maven.plugins.maven-compiler-plugin>3.8.1</version.org.apache.maven.plugins.maven-compiler-plugin>
-        <version.org.apache.maven.plugins.maven-install-plugin>3.0.0-M1</version.org.apache.maven.plugins.maven-install-plugin>
-        <version.org.apache.maven.plugins.maven-jar-plugin>3.2.0</version.org.apache.maven.plugins.maven-jar-plugin>
-        <version.org.apache.maven.plugins.maven-surefire-plugin>3.0.0-M5</version.org.apache.maven.plugins.maven-surefire-plugin>
-        <version.org.junit.jupiter.junit-jupiter-engine>5.8.1</version.org.junit.jupiter.junit-jupiter-engine>
+        <version.com.thoughtworks.gauge.gauge-java>1.0.1</version.com.thoughtworks.gauge.gauge-java>
+        <version.com.thoughtworks.gauge.maven.gauge-maven-plugin>2.0.0</version.com.thoughtworks.gauge.maven.gauge-maven-plugin>
+        <version.maven-clean-plugin.maven-clean-plugin>3.5.0</version.maven-clean-plugin.maven-clean-plugin>
+        <version.org.apache.maven.plugins.maven-assembly-plugin>3.8.0</version.org.apache.maven.plugins.maven-assembly-plugin>
+        <version.org.apache.maven.plugins.maven-compiler-plugin>3.15.0</version.org.apache.maven.plugins.maven-compiler-plugin>
+        <version.org.apache.maven.plugins.maven-install-plugin>3.1.4</version.org.apache.maven.plugins.maven-install-plugin>
+        <version.org.apache.maven.plugins.maven-jar-plugin>3.5.0</version.org.apache.maven.plugins.maven-jar-plugin>
+        <version.org.apache.maven.plugins.maven-surefire-plugin>3.5.5</version.org.apache.maven.plugins.maven-surefire-plugin>
+        <version.org.junit.jupiter.junit-jupiter-engine>6.0.3</version.org.junit.jupiter.junit-jupiter-engine>
+        <version.org.slf4j.slf4j-nop>1.7.36</version.org.slf4j.slf4j-nop>
     </properties>
 
     <dependencyManagement>
@@ -57,6 +58,12 @@
                 <version>${version.org.junit.jupiter.junit-jupiter-engine}</version>
                 <scope>test</scope>
             </dependency>
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-nop</artifactId>
+                <version>${version.org.slf4j.slf4j-nop}</version>
+                <scope>test</scope>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -79,6 +86,11 @@
         <dependency>
             <groupId>com.codeborne</groupId>
             <artifactId>selenide</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-nop</artifactId>
             <scope>test</scope>
         </dependency>
     </dependencies>

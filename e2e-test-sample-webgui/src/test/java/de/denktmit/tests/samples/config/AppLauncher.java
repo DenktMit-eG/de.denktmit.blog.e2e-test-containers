@@ -1,19 +1,16 @@
 package de.denktmit.tests.samples.config;
 
 import com.codeborne.selenide.Configuration;
-import com.codeborne.selenide.WebDriverRunner;
+import com.codeborne.selenide.Selenide;
 import com.thoughtworks.gauge.AfterSuite;
 import com.thoughtworks.gauge.BeforeSuite;
 import com.thoughtworks.gauge.Logger;
 import com.thoughtworks.gauge.datastore.SuiteDataStore;
-import org.openqa.selenium.firefox.FirefoxDriver;
-
+import org.openqa.selenium.firefox.FirefoxOptions;
 public class AppLauncher {
 
   @BeforeSuite
   public void BeforeSuite() {
-    System.setProperty("webdriver.chrome.logfile", "/tmp/chromedriver.log");
-    System.setProperty("webdriver.chrome.verboseLogging", "true");
     prepareSuiteStore();
     prepareSelenide();
   }
@@ -31,16 +28,25 @@ public class AppLauncher {
   }
 
   private void prepareSelenide() {
-    System.setProperty(FirefoxDriver.SystemProperty.BROWSER_LOGFILE,"/dev/null");
+    System.setProperty("webdriver.firefox.logfile", "/dev/null");
     Configuration.browser = "firefox";
-    Configuration.driverManagerEnabled = true;
-    Configuration.headless = "true".equals(load(ConfigParam.HEADLESS_BROWSER.name()));
-    Configuration.timeout = 5000;
+    FirefoxOptions options = new FirefoxOptions();
+    // Use system-installed Firefox instead of Selenium Manager's auto-download
+    String firefoxBinary = System.getenv("FIREFOX_BINARY");
+    if (firefoxBinary != null) {
+      options.setBinary(firefoxBinary);
+    }
+    if ("true".equals(load(ConfigParam.HEADLESS_BROWSER.name()))) {
+      options.addArguments("-headless");
+    }
+    Configuration.browserCapabilities.merge(options);
+    String timeoutStr = System.getenv("SELENIDE_TIMEOUT");
+    Configuration.timeout = timeoutStr != null ? Long.parseLong(timeoutStr) : 5000;
   }
 
   @AfterSuite
   public void AfterSuite() {
-    WebDriverRunner.closeWebDriver();
+    Selenide.closeWebDriver();
   }
 
 }

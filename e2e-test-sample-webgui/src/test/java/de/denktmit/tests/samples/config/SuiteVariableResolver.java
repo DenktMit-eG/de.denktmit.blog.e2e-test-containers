@@ -15,9 +15,14 @@ public final class SuiteVariableResolver {
     StringBuilder sb = new StringBuilder();
     while (m.find()) {
       String keyName = m.group().substring(2, m.group().length() - 1);
-      ConfigParam configParam = ConfigParam.valueOf(keyName);
-      String value = (String) SuiteDataStore.get(configParam);
-      m.appendReplacement(sb, value != null ? value : "");
+      String value;
+      try {
+        ConfigParam configParam = ConfigParam.valueOf(keyName);
+        value = (String) SuiteDataStore.get(configParam);
+      } catch (IllegalArgumentException e) {
+        value = m.group();
+      }
+      m.appendReplacement(sb, Matcher.quoteReplacement(value != null ? value : ""));
     }
     m.appendTail(sb);
     return sb.toString();
